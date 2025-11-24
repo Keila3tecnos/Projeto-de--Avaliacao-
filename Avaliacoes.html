@@ -1,0 +1,85 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MEU SISTEMA DE AVALIAÇÃO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+<body>
+  <main class="main">
+      <div class="top-cards">
+        <div class="card">
+          <h3>Gestor</h3>
+          <div class="row" style="margin-top:12px">
+            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
+              <div style="font-size:12px;color:var(--muted)">Funcionários</div>
+              <div class="big"></div>
+            </div>
+            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
+              <div style="font-size:12px;color:var(--muted)">Critérios</div>
+              <div class="big">05</div>
+            </div>
+            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
+              <div style="font-size:12px;color:var(--muted)">Avaliações</div>
+              <div class="big">
+                <span id="avaliacoes-cont"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+            
+
+
+      <div class="card">
+        <h3>Relatórios Rápidos</h3>
+        <p style="color:var(--muted)">Visualização resumida das métricas.</p>
+      </div>
+    </main>
+
+    <aside>
+    
+
+        <h3>Avaliação</h3>
+
+        <label>Funcionário</label>
+        <select id="lista-funcionarios"></select>
+        
+
+        <label>Critério</label>
+        <select id="avaliacaoCriterio">
+          <option>Pontualidade</option>
+          <option>Produtividade</option>
+          <option>Postura</option>
+          <option>Agilidade</option>
+        </select>
+
+        <label>Nota</label>
+        <input id="avaliacaoNota" type="number" min="0" max="10">
+         <label for="data">Data</label>
+          <input id="data" type="date" value="2024-03-18">
+
+          <div style="margin-top:10px">
+          <button class="btn" onclick="registrarAvaliacao()">Registrar</button>
+          </div>
+
+          <div style="margin-top:12px" class="chart-wrap">
+            <canvas id="barChart"></canvas>
+          </div>
+
+        <div style="margin-top:12px" class="chart-wrap">
+          <canvas id="grafico"></canvas>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+
+</body>
+</head>
+
+<script src="Modelo.js"></script>
+<script src="Avaliacoes.js"></script>
+
+</html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MEU SISTEMA DE AVALIAÇÃO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="Funcionarios.js"></script>
+
+<body>
+ <div class="app">
+    <aside class="sidebar">
+      <div class="brand">3tecnos</div>
+      <ul class="menu">
+        <li><span>🏠</span><small>Avaliador</small></li>
+        <li><span>👥</span><small>Funcionários</small></li>
+        <li><span>📊</span><small>Avaliações</small></li>
+      </ul>
+    </aside>
+
+    <tbody id="lista-funcionarios"></tbody>
+
+    <main class="main">
+      <div class="top-cards">
+        
+
+        <div class="card" >
+          <h3>Funcionários</h3>
+          <div style="margin-top:10px">
+            <table id="funcionarios">
+              <thead>
+                <tr>
+                    <th><input type="checkbox"/></th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                </tr>
+                </thead>
+              <tbody>
+              </tbody>
+            </table>
+            <div style="margin-top:10px">
+            <button onclick="removerFuncionarios()"  class="btn">Remover</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="form-card">
+        <h2>Cadastro de Funcionário</h2>
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" >
+
+        <label for="email">E-mail</label>
+        <input id="email" type="text" >
+
+         <div style="margin-top:10px">
+            <button onclick="registrarFuncionario();" class="btn">Registrar</button>
+          </div>
+
+      </div>
+    </aside>
+
+  </div>
+</body>
+</html>
