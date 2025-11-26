@@ -1,85 +1,59 @@
-<html>
+<!doctype html>
+<html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MEU SISTEMA DE AVALIAÇÃO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
-<body>
-  <main class="main">
-      <div class="top-cards">
-        <div class="card">
-          <h3>Gestor</h3>
-          <div class="row" style="margin-top:12px">
-            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
-              <div style="font-size:12px;color:var(--muted)">Funcionários</div>
-              <div class="big"></div>
-            </div>
-            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
-              <div style="font-size:12px;color:var(--muted)">Critérios</div>
-              <div class="big">05</div>
-            </div>
-            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
-              <div style="font-size:12px;color:var(--muted)">Avaliações</div>
-              <div class="big">
-                <span id="avaliacoes-cont"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-            
-
-
-      <div class="card">
-        <h3>Relatórios Rápidos</h3>
-        <p style="color:var(--muted)">Visualização resumida das métricas.</p>
-      </div>
-    </main>
-
-    <aside>
-    
-
-        <h3>Avaliação</h3>
-
-        <label>Funcionário</label>
-        <select id="lista-funcionarios"></select>
-        
-
-        <label>Critério</label>
-        <select id="avaliacaoCriterio">
-          <option>Pontualidade</option>
-          <option>Produtividade</option>
-          <option>Postura</option>
-          <option>Agilidade</option>
-        </select>
-
-        <label>Nota</label>
-        <input id="avaliacaoNota" type="number" min="0" max="10">
-         <label for="data">Data</label>
-          <input id="data" type="date" value="2024-03-18">
-
-          <div style="margin-top:10px">
-          <button class="btn" onclick="registrarAvaliacao()">Registrar</button>
-          </div>
-
-          <div style="margin-top:12px" class="chart-wrap">
-            <canvas id="barChart"></canvas>
-          </div>
-
-        <div style="margin-top:12px" class="chart-wrap">
-          <canvas id="grafico"></canvas>
-        </div>
-
-      </div>
-    </aside>
-
-  </div>
-
-</body>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Avaliações - Sistema de Avaliação</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 
-<script src="Modelo.js"></script>
+<body>
+<!-- Botão de troca de usuário dentro do menu -->
+	<div style="display: flex; height: 100%; padding: 10px; gap: 20px;">
+		<aside class="sidebar">
+			<div class="brand">3Tecnos</div>
+			<ul class="menu">
+				<li><a href="Default.html"><span>🏠</span><small>Dashboard</small></a></li>
+				<li><a href="Funcionarios.html"><span>👥</span><small>Funcionários</small></a></li>
+				<li class="active"><span >📊</span><small>Avaliações</small></li>
+			</ul>
+			<button onclick="logoutUsuario()" class="btn" style="background:#eee;color:#333;width:100%;margin-top:18px">Trocar de Usuário</button>
+		</aside>
+		<div class="content">
+			<h2>Registrar Avaliação</h2>
+			<form id="form-avaliacao" onsubmit="return false;">
+				<label>Funcionário</label>
+				<select id="lista-funcionarios" required></select>
+				<label>Critério</label>
+				<select id="avaliacaoCriterio" required>
+					<option>Pontualidade</option>
+					<option>Produtividade</option>
+					<option>Postura</option>
+					<option>Agilidade</option>
+				</select>
+				<label>Nota</label>
+				<input type="number" id="avaliacaoNota" min="0" max="10" required>
+				<label>Comentário/Feedback</label>
+				<textarea id="avaliacaoComentario" rows="2"></textarea>
+				<button onclick="salvarAvaliacao()" class="btn">Salvar Avaliação</button>
+				<button type="button" onclick="limparAvaliacao()" class="btn" style="background:#aaa">Limpar</button>
+			</form>
+
+			<h2 style="margin-top:32px">Avaliações Recentes</h2>
+			<table style="width:100%;margin-top:10px">
+				<thead>
+					<tr><th>Funcionário</th><th>Critério</th><th>Nota</th><th>Comentário</th><th>Data</th></tr>
+				</thead>
+				<tbody id="lista-avaliacoes"></tbody>
+			</table>
+		</div>
+	</div>
+	<!-- Conteúdo principal do dashboard será adicionado depois -->
+
+<script src="api.js"></script>
+<script src="main.js"></script>
 <script src="Avaliacoes.js"></script>
+</body>
 
 </html>

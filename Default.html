@@ -1,130 +1,61 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MEU SISTEMA DE AVALIAÇÃO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Dashboard - Sistema de Avaliação</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app">
-    <aside class="sidebar">
-      <div class="brand">3tecnos</div>
-      <ul class="menu">
-        <li><span>🏠</span><small>Avaliador</small></li>
-        <li><a href="Funcionarios.html"><span>👥</span><small>Funcionários</small></a></li>
-        <li><a href="Avaliacoes.html"><span>📊</span><small>Avaliações</small></li>
-      </ul>
-    </aside>
+<!-- Botão de troca de usuário dentro do menu -->
+	<div style="display: flex; height: 100%; padding: 10px; gap: 20px;">
+		<aside class="sidebar">
+			<div class="brand">3Tecnos</div>
+			<ul class="menu">
+				<li class="active"><span>🏠</span><small>Dashboard</small></li>
+				<li><a href="Funcionarios.html"><span>👥</span><small>Funcionários</small></a></li>
+				<li><a href="Avaliacoes.html"><span>📊</span><small>Avaliações</small></a></li>
+			</ul>
+			<button onclick="logoutUsuario()" class="btn" style="background:#eee;color:#333;width:100%;margin-top:18px">Trocar de Usuário</button>
+		</aside>
+		<div class="content">
+			<h1>Dashboard</h1>
+			<div style="display:flex;gap:24px;flex-wrap:wrap">
+				<div style="background:#fff;padding:18px;border-radius:8px;min-width:180px;flex:1">
+					<div style="color:var(--muted)">Funcionários</div>
+					<div id="count-funcionarios" style="font-size:2em;font-weight:600"></div>
+				</div>
+				<div style="background:#fff;padding:18px;border-radius:8px;min-width:180px;flex:1">
+					<div style="color:var(--muted)">Avaliações</div>
+					<div id="count-avaliacoes" style="font-size:2em;font-weight:600"></div>
+				</div>
+			</div>
 
-    <tbody id="lista-funcionarios"></tbody>
+			<h2 style="margin-top:32px">Médias por Critério</h2>
+			<table style="width:100%;margin-top:10px">
+				<thead>
+					<tr><th>Critério</th><th>Média</th></tr>
+				</thead>
+				<tbody id="medias-criterios"></tbody>
+			</table>
 
-    <main class="main">
-      <div class="top-cards">
-        <div class="card">
-          <h3>Gestor</h3>
-          <div class="row" style="margin-top:12px">
-            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
-              <div style="font-size:12px;color:var(--muted)">Funcionários</div>
-              <div class="big"></div>
-            </div>
-            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
-              <div style="font-size:12px;color:var(--muted)">Critérios</div>
-              <div class="big">05</div>
-            </div>
-            <div style="flex:1;background:#f8fbff;padding:12px;border-radius:8px;text-align:center">
-              <div style="font-size:12px;color:var(--muted)">Avaliações</div>
-              <div class="big"></div>
-            </div>
-          </div>
-        </div>
+			<h2 style="margin-top:32px">Destaques</h2>
+			<ul id="destaques"></ul>
 
-        <div class="card" style="flex:0.9">
-          <h3>Funcionários</h3>
-          <div style="margin-top:10px">
-            <table>
-              <thead><tr><th>ID</th><th>Nome</th><th>Setor</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td>Fulano da Silva</td><td>Suporte</td></tr>
-                <tr><td>2</td><td>Ciclano Sousa</td><td>Comercial</td></tr>
-                <tr><td>3</td><td>Beltrano Costa</td><td>TI</td></tr>
-                <tr><td>4</td><td>Maria Aparecida</td><td>TI</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:18px">
-        <h3>Relatórios Rápidos</h3>
-        <p style="color:var(--muted);margin-top:8px">Visualização resumida das métricas.</p>
-      </div>
-    </main>
-
-    <aside>
-      <div class="form-card">
-        <h2>Cadastro de Funcionário</h2>
-        <label for="nome">Nome</label>
-        <input id="nome" type="text" value="Fulano da Silva">
-
-        <label for="criterio">Critério</label>
-        <select id="criterio">
-          <option>Participação nos grupos dos Parceiros</option>
-          <option>Apuração do chamado recepcionado</option>
-          <option>Agilidadade nas resoluções</option>
-          <option>Postura mediante ao cliente</option>
-          <option>Atenção com as demandas em andamento</option>
-        </select>
-
-        <label for="nota">Nota</label>
-        <input id="nota" type="number" min="0" max="10" value="\n">
-
-        <div class="report">
-          <h4 style="margin:6px 0">Relatórios</h4>
-          <label for="relFuncionario">Funcionário</label>
-          <select id="relFuncionario">
-            <option>Fulano da Silva</option>
-            <option>Ciclano Sousa</option>
-          </select>
-
-          <label for="data">Data</label>
-          <input id="data" type="date" value="2024-03-18">
-
-          <div style="margin-top:10px">
-            <button class="btn">Registrar</button>
-          </div>
-
-          <div style="margin-top:12px" class="chart-wrap">
-            <canvas id="barChart"></canvas>
-          </div>
-        </div>
-      </div>
-    </aside>
-  </div>
-
-
-  <script src="Modelo.js"></script>
-  
-  <script>
-    const ctx = document.getElementById('barChart');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Pontualidade', 'Produtividade'],
-        datasets: [{
-          label: 'Média de Notas',
-          data: [3,4],
-          borderWidth: 0
-        }]
-      },
-      options: {
-        responsive:true,
-        maintainAspectRatio:false,
-        plugins:{legend:{display:false}},
-        scales:{y:{beginAtZero:true, max:5}}
-      }
-    });
-  </script>
+			<h2 style="margin-top:32px">Relatórios</h2>
+			<div style="margin-bottom:16px">
+				<label>Buscar funcionário:</label>
+				<select id="relatorioFuncionario" onchange="renderRelatorioFuncionario()">
+					<option value="">Selecione</option>
+				</select>
+			</div>
+			<div id="relatorio-individual"></div>
+			<h3 style="margin-top:32px">Relatório Geral</h3>
+			<div id="relatorio-geral"></div>
+		</div>
+	</div>
 </body>
+<script src="api.js"></script>
+<script src="main.js"></script>
+<script src="Default.js"></script>
 </html>
