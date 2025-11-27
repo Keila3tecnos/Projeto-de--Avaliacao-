@@ -1,5 +1,5 @@
 
-function renderFuncionariosAvaliacao() {
+function mostrarFuncionariosAvaliacao() {
 	const select = document.getElementById('lista-funcionarios');
 	select.innerHTML = '';
 	getFuncionarios().forEach(f => {
@@ -20,10 +20,10 @@ function salvarAvaliacao() {
 	if (!funcionarioId || !criterio || !nota) return;
 	registrarAvaliacaoCompleta({ funcionarioId, criterio, nota, comentario });
 	limparAvaliacao();
-	renderAvaliacoes();
+	mostrarAvaliacoes();
 }
 
-function renderAvaliacoes() {
+function mostrarAvaliacoes() {
 	const lista = document.getElementById('lista-avaliacoes');
 	lista.innerHTML = '';
 	const avaliacoes = getAvaliacoes().slice(-10).reverse();
@@ -46,6 +46,6 @@ function limparAvaliacao() {
 }
 
 window.onload = function() {
-	renderFuncionariosAvaliacao();
-	renderAvaliacoes();
+	mostrarFuncionariosAvaliacao();
+	mostrarrAvaliacoes();
 };

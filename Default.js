@@ -1,4 +1,4 @@
-function renderDashboard() {
+function mostrarDashboard() {
 	const usuario = getUsuarioLogado();
 	// Totais
 	document.getElementById('count-funcionarios').textContent = getFuncionarios().length;
@@ -47,7 +47,7 @@ function renderDashboard() {
 	}
 }
 
-function renderRelatorioFuncionario() {
+function mostrarRelatorioFuncionario() {
 	const usuario = getUsuarioLogado();
 	if (!usuario || (usuario.tipo !== 'admin' && usuario.tipo !== 'gestor')) return;
 	const id = document.getElementById('relatorioFuncionario').value;
@@ -66,7 +66,7 @@ function renderRelatorioFuncionario() {
 	div.innerHTML = html;
 }
 
-function renderRelatorioGeral() {
+function mostrarRelatorioGeral() {
 	const usuario = getUsuarioLogado();
 	if (!usuario || (usuario.tipo !== 'admin' && usuario.tipo !== 'gestor')) return;
 	const avs = getAvaliacoes();
@@ -95,7 +95,7 @@ function preencherSelectRelatorio() {
 }
 
 window.onload = function() {
-	renderDashboard();
+	mostrarDashboard();
 	preencherSelectRelatorio();
-	renderRelatorioGeral();
+	mostrarRelatorioGeral();
 };

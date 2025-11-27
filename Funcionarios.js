@@ -1,4 +1,4 @@
-function renderFuncionarios() {
+function mostrarFuncionarios() {
 	const lista = document.getElementById('lista-funcionarios');
 	lista.innerHTML = '';
 	const funcionarios = getFuncionarios();
@@ -29,7 +29,7 @@ function abrirMetas(id, nome) {
 	funcionarioSelecionado = id;
 	document.getElementById('metas-competencias').style.display = '';
 	document.getElementById('nome-meta').textContent = nome;
-	renderMetas();
+	mostrarMetas();
 	document.getElementById('lista-competencias').style.display = 'none';
 }
 function abrirCompetencias(id, nome) {
@@ -41,7 +41,7 @@ function abrirCompetencias(id, nome) {
 	funcionarioSelecionado = id;
 	document.getElementById('metas-competencias').style.display = '';
 	document.getElementById('nome-meta').textContent = nome;
-	renderCompetencias();
+	mostrarCompetencias();
 	document.getElementById('lista-metas').style.display = 'none';
 }
 function fecharMetasCompetencias() {
@@ -61,9 +61,9 @@ function adicionarMetaUI() {
 	adicionarMeta(funcionarioSelecionado, desc, peso);
 	document.getElementById('metaDescricao').value = '';
 	document.getElementById('metaPeso').value = '';
-	renderMetas();
+	mostrarMetas();
 }
-function renderMetas() {
+function mostrarMetas() {
 	const ul = document.getElementById('lista-metas');
 	ul.style.display = '';
 	const metas = getMetas().filter(m => m.funcionarioId === funcionarioSelecionado);
@@ -83,9 +83,9 @@ function adicionarCompetenciaUI() {
 	adicionarCompetencia(nome, peso);
 	document.getElementById('compNome').value = '';
 	document.getElementById('compPeso').value = '';
-	renderCompetencias();
+	mostrarCompetencias();
 }
-function renderCompetencias() {
+function mostrarCompetencias() {
 	const ul = document.getElementById('lista-competencias');
 	ul.style.display = '';
 	const competencias = getCompetencias();
@@ -103,7 +103,7 @@ function removerMetaUI(idx) {
 	let metas = getMetas();
 	metas = metas.filter((m, i) => !(m.funcionarioId === funcionarioSelecionado && i === idx));
 	setMetas(metas);
-	renderMetas();
+	mostrarMetas();
 }
 // Remover competência por índice
 function removerCompetenciaUI(idx) {
@@ -115,7 +115,7 @@ function removerCompetenciaUI(idx) {
 	let competencias = getCompetencias();
 	competencias.splice(idx, 1);
 	setCompetencias(competencias);
-	renderCompetencias();
+	mostrarCompetencias();
 }
 
 function salvarFuncionario() {
@@ -136,7 +136,7 @@ function salvarFuncionario() {
 		adicionarFuncionarioCompleto(nome, email, setor, tipo);
 	}
 	limparFormulario();
-	renderFuncionarios();
+	mostrarFuncionarios();
 }
 
 function editarFuncionarioUI(id) {
@@ -157,7 +157,7 @@ function excluirFuncionarioUI(id) {
 	}
 	if (confirm('Excluir este funcionário?')) {
 		excluirFuncionario(id);
-		renderFuncionarios();
+		mostrarFuncionarios();
 		limparFormulario();
 	}
 }
@@ -170,7 +170,7 @@ function limparFormulario() {
 }
 
 window.onload = function() {
-	renderFuncionarios();
+	mostrarFuncionarios();
 	// Exibe campo de tipo apenas para admin
 	setTimeout(() => {
 		const usuario = getUsuarioLogado();
